@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table,tr,td{border: 1px solid;
+            
+
+        }
+        td{
+            text-align: center;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color:yellow;
+        }
+        th{
+            text-align: center;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>This is my Data</h1>
+    <table>
+    
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>School</th>
+          <th>std</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+          <td>{{i.name}} </td>
+          <td>{{i.age}}</td>
+          <td>{{i.email}}</td>
+        
+        
+          <td>{{i.school}}</td>
+          <td>{{i.std}}</td>
+          
+        </tr>
+        {% endfor %}
+      </table>
+</body>
+</html>
