@@ -9,16 +9,17 @@
     <form action="" method="post">
         {% csrf_token %}
         <label for="">name</label>
-        <input type="text" placeholder="enter your name" name="name" required><br><br>
+        <input type="text" placeholder="enter your name" name="name" value="{{data.name}}" required><br><br>
         <label for="">age</label>
-        <input type="number" placeholder="age" name="age" required><br><br>
+        <input type="number" placeholder="age" name="age" value="{{data.age}}" required><br><br>
         <label for="">email</label>
-        <input type="email" placeholder="enter your name" name="email" required><br><br>
+        <input type="email" placeholder="enter your name" name="email" value="{{data.email}}" required><br><br>
         <label for="">school</label>
-        <input type="text" placeholder="enter your name" name="school" required><br><br>
+        <input type="text" placeholder="enter your name" name="school" value="{{data.school}}" required><br><br>
         <label for="">std</label>
-        <input type="text" placeholder="enter your name" name="std" required><br><br>
+        <input type="text" placeholder="enter your name" name="std" value="{{data.std}}" required><br><br>
         <button type="submit">submit</button><br><br>
+        <button type="reset">reset</button>
 
 
     </form>

@@ -23,5 +23,8 @@ urlpatterns = [
     path('ind/', views.ind,name='ind'),
     path('abc/', views.abc,name='abc'),
     path('show/', views.show,name='show'),
+    path('delete/<int:id>', views.delete,name='delete'),
+    path('update/<int:id>',views.update,name='update')
+
 
 ]

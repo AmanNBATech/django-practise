@@ -32,14 +32,19 @@
     <table>
     
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Age</th>
           <th>Email</th>
           <th>School</th>
           <th>std</th>
+          <th>Edit</th>
+          <th>Delete</th>
+
         </tr>
         {% for i in data %}
         <tr>
+          <td>{{i.id}} </td>
           <td>{{i.name}} </td>
           <td>{{i.age}}</td>
           <td>{{i.email}}</td>
@@ -47,6 +52,10 @@
         
           <td>{{i.school}}</td>
           <td>{{i.std}}</td>
+          <td><a href="{% url 'update' i.id %}"><button>Edit</button></a></td>
+          <td><a href="{% url 'delete' i.id %}"><button>Delete</button></a></td>
+
+
           
         </tr>
         {% endfor %}

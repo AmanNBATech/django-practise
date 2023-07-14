@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import student
 
 # Create your views here.
@@ -35,5 +35,29 @@ def abc(request):
     
 def show(request):
      data=student.objects.all
-     return render(request,'show.html',{'data':data})
+     return render(request,'show.html',{'data':data}) 
+
+def delete(request,id):
+    student.objects.get(id=id).delete()
+    return redirect('show')
+
+
+
+def update(request,id):
+    if request.method=='GET':
+      data = student.objects.get(id=id)  
+      return render(request,'home.html',{'data':data})
+    
+    else:
+      name=request.POST['name']
+      age=request.POST['age']
+      email=request.POST['email']
+      school=request.POST['school']
+      std=request.POST['std']
+      data=student(id=id,name=name,age=age,email=email,school=school,std=std)
+      data.save()
+      return redirect('show')
+
+    
+
 
