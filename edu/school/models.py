@@ -18,3 +18,27 @@ class student(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class vehcile(models.Model):
+    mode=models.CharField(max_length=50)
+    myear=models.PositiveIntegerField()
+    reg_no=models.PositiveIntegerField()
+    color=models.CharField(max_length=50)
+    fuel=models.CharField(max_length=50)
+    cost=models.CharField(max_length=50)
+    def __str__(self):
+        return self.mode
+
+class sports(models.Model):
+    basketball=models.PositiveIntegerField()
+    football=models.PositiveIntegerField()
+    kabbadi=models.PositiveIntegerField()
+    cricket=models.PositiveIntegerField()
+    volleyball=models.PositiveIntegerField()
+
+
+
+    def __str__(self):
+        return self.basketball
+

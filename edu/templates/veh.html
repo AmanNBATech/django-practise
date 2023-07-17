@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #yt{
+            margin-left: -50% ;
+            margin-top: 5%;
+            
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 60px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+        }
+    
+        .form-container h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 0;
+        }
+    
+        .form-container label {
+            font-weight: bold;
+        }
+    
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    
+        .form-container button[type="submit"] {
+            background-color: #4CAF50;
+        }
+    
+        .form-container button[type="reset"] {
+            background-color: #f44336;
+        }
+        #po{
+            margin-left: 4%;
+           }
+        h1{
+            margin-left: 35%;
+        }
+         div{
+            margin-left: 50%;
+            margin-top: -62%;
+         }  
+        table{
+             width: 100%;
+             border-collapse: collapse;
+         }
+         table,tr,td{border: 1px solid;
+             
+ 
+         }
+         td{
+             text-align: center;
+             padding-top: 12px;
+             padding-bottom: 12px;
+             background-color:yellow;
+         }
+         th{
+             text-align: center;
+             padding-top: 12px;
+             padding-bottom: 12px;
+             background-color: blue;
+         }
+         a button{
+             background-color: chartreuse;
+         }
+    </style>
+</head>
+<body>
+    <h1 id="vb">Registration Form</h1>
+    <div id="yt">
+    <div class="form-container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <h1 id="po">Enter Vehicle Details</h1>
+     <label for="">Mode</label><br>
+     <input type="text" placeholder="Enter wheel drive info" name="mode" value="{{main.mode}}" required><br><br> 
+      <label for="">Manufact Year</label><br>
+     <input type="text" placeholder="Year of Manufacturing" name="year" value="{{main.year}}" required><br><br>
+     <label for="">Reg year</label><br>
+     <input type="text" placeholder="Regis Details" name="reg" value="{{main.reg}}" required><br><br> 
+      <label for="">Color</label><br>
+     <input type="text" placeholder=" Color of vehicle" name="color"value="{{main.color}}" required><br><br>   
+     <label for="">Cost</label>
+
+     <input type="text" placeholder="Cost of vehicle" name="cost"value="{{main.cost}}" required><br><br>
+     <label for="">Fuel</label><br>
+     <input type="text" placeholder="Type of fuel" name="fuel"value="{{main.fuel}}" required><br><br>
+     <button type="submit">submit</button><br><br>
+     <button type="reset">Reset</button>
+    </form>
+    </div>
+    </div>
+    <div>
+    <h1>Detail of vehicle</h1>
+    <table>
+    
+        <tr>
+          <th>ID</th>
+          <th>Model</th>
+          <th>M-Year</th>
+          <th>Reg No</th>
+          <th>color</th>
+          <th>Cost</th>
+          <th>Edit</th>
+          <th>Delete</th>
+
+          </tr>
+        {% for b in info %}
+          <tr>
+          <td>{{b.id}}</td>
+          <td>{{b.mode}} </td>
+          <td>{{b.myear}}</td>
+          <td>{{b.reg_no}}</td>
+          <td>{{b.color}}</td>
+          <td>{{b.cost}}</td>
+
+          <td><a href="{% url 'edit' b.id %}"><button>Edit</button></a></td>
+          <td><a href="{% url 'dele' b.id %}"><button>Delete</button></a></td>
+
+
+          
+          </tr>
+        {% endfor %}
+    </table>
+</div>    
+</body>
+</html>

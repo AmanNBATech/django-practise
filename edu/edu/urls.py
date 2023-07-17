@@ -23,8 +23,16 @@ urlpatterns = [
     path('ind/', views.ind,name='ind'),
     path('abc/', views.abc,name='abc'),
     path('show/', views.show,name='show'),
+    path('veh/' ,views.veh ,name='veh'),
     path('delete/<int:id>', views.delete,name='delete'),
-    path('update/<int:id>',views.update,name='update')
+    path('update/<int:id>',views.update,name='update'),
+    path('dele/<int:id>',views.dele,name='dele'),
+    path('edit/<int:id>',views.edit,name='edit'),
+    path('djangoform/',views.djangoform,name='djangoform'),
+    path('sports/',views.sports,name='sports')
+
+
+
 
 
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .models import student
+from .models import *
+from .forms import *
 
 # Create your views here.
 def home(request):
@@ -38,8 +39,10 @@ def show(request):
      return render(request,'show.html',{'data':data}) 
 
 def delete(request,id):
-    student.objects.get(id=id).delete()
-    return redirect('show')
+     data=student.objects.get(id=id)
+     data.delete()
+     return redirect('show')
+  
 
 
 
@@ -58,6 +61,75 @@ def update(request,id):
       data.save()
       return redirect('show')
 
+def veh(request):
+    if request.method=='GET':
+        inform = vehcile.objects.all()
+        return render(request, 'veh.html', {'info': inform})
+        
+    
+    
+    else:
+      mode=request.POST['mode']
+      year=request.POST['year']
+      reg=request.POST['reg']
+      color=request.POST['color']
+      cost=request.POST['cost']
+      fuel=request.POST['fuel']
+
+      info=vehcile(mode=mode,myear=year,reg_no=reg,color=color,cost=cost,fuel=fuel)
+      info.save()
+      inform=vehcile.objects.all()
+      return render(request,'veh.html',{'info':inform})
+
+
+def dele(request,id):
+   
+     vehcile.objects.get(id=id).delete()
+     return redirect('veh')
+
+def edit(request,id):
+    if request.method == 'GET':
+  
+        info=vehcile.objects.get(id=id)
+        inform=vehcile.objects.all()
+        return render(request, 'veh.html', {'info':inform,'main':info})
+    else:
+        mode = request.POST['mode']
+        year = request.POST['year']
+        reg = request.POST['reg']
+        color = request.POST['color']
+        cost = request.POST['cost']
+        fuel = request.POST['fuel']
+
+        info = vehcile(id = id,mode=mode, myear=year, reg_no=reg, color=color, cost=cost, fuel=fuel)
+        info.save()
+        
+        inform=vehcile.objects.all()
+        return redirect('veh')
+        
+        # return render(request,'veh.html',{'info':inform})
+
     
 
+
+def djangoform(request):
+    if request.method=='GET':
+        form=vehcileform()
+        return render(request,'djangoform.html',{'form':form})
+    else:
+        form=vehcileform(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('djangoform')
+    
+def sports(request):
+    if request.method=='GET':
+        form=sportsform()
+        return render(request,'sports.html',{'form':form})
+    else:
+        form=sportsform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sports')
+        
 
