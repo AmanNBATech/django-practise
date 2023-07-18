@@ -11,5 +11,36 @@
         {{form.as_p}}
         <button type="submit">submit</button>
     </form>
+    <h1>Detail of games</h1>
+    <table>
+    
+        <tr>
+          <th>ID</th>
+          <th>Model</th>
+          <th>M-Year</th>
+          <th>Reg No</th>
+          <th>color</th>
+          <th>Cost</th>
+          <th>Edit</th>
+          <th>Delete</th>
+
+          </tr>
+        {% for c in ib %}
+          <tr>
+          <td>{{c.id}}</td>
+          <td>{{c.basketball}} </td>
+          <td>{{c.football}}</td>
+          <td>{{c.kabbadi}}</td>
+          <td>{{c.cricket}}</td>
+          <td>{{c.volleyball}}</td>
+
+          <td><a href="{% url 'change' c.id %}"><button>Edit</button></a></td>
+          <td><a href="{% url 'move' c.id %}"><button>Delete</button></a></td>
+
+
+          
+          </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

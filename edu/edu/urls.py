@@ -29,7 +29,12 @@ urlpatterns = [
     path('dele/<int:id>',views.dele,name='dele'),
     path('edit/<int:id>',views.edit,name='edit'),
     path('djangoform/',views.djangoform,name='djangoform'),
-    path('sports/',views.sports,name='sports')
+    path('sport/',views.sport,name='sport'),
+    path('move/<int:id>',views.move,name='move'),
+    path('change/<int:id>',views.change,name='change'),
+
+
+    
 
 
 

@@ -115,6 +115,7 @@ def edit(request,id):
 def djangoform(request):
     if request.method=='GET':
         form=vehcileform()
+        
         return render(request,'djangoform.html',{'form':form})
     else:
         form=vehcileform(request.POST)
@@ -122,14 +123,32 @@ def djangoform(request):
             form.save()
         return redirect('djangoform')
     
-def sports(request):
+def sport(request):
     if request.method=='GET':
         form=sportsform()
-        return render(request,'sports.html',{'form':form})
+        ib=sports.objects.all()
+        return render(request,'sports.html',{'form':form,'ib':ib})
     else:
         form=sportsform(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('sports')
+            ib=sports.objects.all()
+            
+            return redirect('sport')
+
+def move(request,id):
+    sports.objects.get(id=id).delete()
+    return redirect('sport')
+
+    
+def change(request,id): 
+    emp = sports.objects.get(id=id)  
+    form = sportsform(request.POST, instance = emp)  
+    if form.is_valid():  
+        form.save()  
+        
+        return redirect("/sport") 
+     
+    return render(request, 'sports.html', {'emp': emp,'form':form})  
         
 
