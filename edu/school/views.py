@@ -143,12 +143,26 @@ def move(request,id):
     
 def change(request,id): 
     emp = sports.objects.get(id=id)  
-    form = sportsform(request.POST, instance = emp)  
-    if form.is_valid():  
-        form.save()  
+    if request.method=='GET':
+        form=sportsform(instance=emp)
+        ibc=sports.objects.all()
+        return render(request,'sports.html',{'form':form,'ib':ibc})
+    else:
+        form=sportsform(request.POST,instance=emp)
+        if form.is_valid():
+            form.save()
+            return redirect('sport')
         
-        return redirect("/sport") 
+
+    # if request.method=='POST':
+    #   form = sportsform(request.POST, instance = emp)  
+    # return render(request, 'sports.html', {'form':form})  
+
+    # if form.is_valid():  
+    #     form.save()  
+        
+    #     return redirect("/sport") 
      
-    return render(request, 'sports.html', {'emp': emp,'form':form})  
+    # return render(request, 'sports.html', {'emp': emp,'form':form})  
         
 
