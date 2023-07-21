@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+
+<form action="" method="post">
+    {% csrf_token %}
+  <div class="container">  
+    <h1>Using Foreign Key </h1>  
+    
+  <form style="width:300px">  
+    <div class="form-group">  
+        
+      <label for="">Name</label>  
+      <input type="text" class="form-control"  placeholder="name" name="name">  
+    </div>  
+    <div class="form-group">  
+      <label for="">Age</label>  
+      <input type="text" class="form-control" placeholder="your Age"  name="age">  
+    </div>  
+    <div class="form-group">  
+        <label for="">Branch</label>
+        <select id="Branch" name="branch">
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+        <button type="submit">submit</button>
+      </div> 
+      
+  </form>  
+    
+  </div>  
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+
+
+
+{% endblock %}

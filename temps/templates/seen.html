@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  
+           
+   
+    <div class="container">  
+        <div class="table-responsive">
+        <div class="table-hover" >
+            <h1>Basic Table Example</h1>  
+            
+          <table class="table "  >  
+        
+        
+            {% for i in see %}            
+            <tr class="success align-center"><th>Title</th><th>Image</th><th>Description</th></tr>  
+            <tr class="danger"><td>{{i.title}}</td><td>  <img src="{{i.image.url}}" width="100"   alt=""><br><br></td><td>{{i.description}}</td></tr>  
+            
+           
+            <tr    
+            {% endfor %}
+        
+          </table>  
+            
+          </div>  
+        </div>
+        </div>
+
+
+{% endblock %}

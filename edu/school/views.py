@@ -118,7 +118,7 @@ def djangoform(request):
         
         return render(request,'djangoform.html',{'form':form})
     else:
-        form=vehcileform(request.POST)
+        form=vehcileform(request.POST,request.FILES)
         if form.is_valid():
             form.save()
         return redirect('djangoform')

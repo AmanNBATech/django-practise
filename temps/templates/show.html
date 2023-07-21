@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .container{
+        display: flex;
+        margin: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+    .branch{
+        margin: 20px;
+        cursor: pointer;
+    }
+</style>
+<div class="container">
+    {% for b in dat %}
+    <div class="branch">
+        <a href="{% url 'filter' b %}">
+            {{b.branch}}
+        </a>
+    </div>
+        {% endfor %}
+</div>
+
+
+<div class="container">  
+<div class="table-responsive">
+<div class="table-hover">
+    <h1>Basic Table Example</h1>  
+    
+  <table class="table "  >  
+
+
+    {% for i in data %}
+    <tr class="success"><th>Id</th><th>Name</th><th>Age</th></tr>  
+    <tr class="danger"><td>101</td><td>{{i.name}}</td><td>{{i.age}}</td></tr>  
+    <tr class="success"></tr> <td>102</td><td>{{i.age}}</td><td>22</td></tr>  
+   
+    <tr    
+    {% endfor %}
+
+  </table>  
+    
+  </div>  
+</div>
+</div>
+{% endblock %}
